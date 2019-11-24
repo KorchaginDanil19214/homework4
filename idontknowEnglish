@@ -1,0 +1,35 @@
+data Band = Band { nameofBand::String,
+                albums:: [String],
+                songs:: [String]
+                } deriving Show
+
+data Song = Song { 
+                    nameofSong:: String
+                  } deriving Show
+
+data Album = Album { 
+                     nameofAlbum::String,
+                     albumSongs:: [String]
+                    } deriving Show
+
+data User = User {
+                  idUser:: Int
+                  uBands:: [String],
+                  uAlbums:: [String],
+                  uSongs::[String]            
+                  } deriving Show
+
+
+fSong:: String -> [String] -> [String] -> [String]
+fSong _ [] acc = acc
+fSong name (x:list) acc = fSong name list ((fSongGroup x []) ++ acc) where
+	 fSongMusicBand (Band _ tracks _) ac = filter (\y->(nameSong) y == name) tracks
+
+addBand :: User -> Band -> User
+addBand (User namei Bandsi albumsi songsi) (Band nameM albumsM songsM) = User namei (nameM:Bandsi) (albumsM ++ albumsi) (songsM ++ songsi)
+
+addAlbum :: User -> Album -> User
+addAlbum (User namei Bandsi albumsi songsi) (Album nameA songsA) = User namei Bandsi (nameA : albumsi) (songsA ++ songsi)
+
+addSong :: User -> Song -> User
+addSong (User namei Bandsi albumsi songsi) (Song nameS) = User namei Bandsi albumsU (nameS : songsi)
